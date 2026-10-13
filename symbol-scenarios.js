@@ -3,9 +3,15 @@ var longInput;
 var dataValueInput;
 
 function setup() {
-  createCanvas(800, 420);
-// The actual coordinates will appear within a 720 by 360 pixel range. The extra pixels are there to create space for the interactivity and provide a sense of a border.
-// textAlign(CENTER, CENTER)
+  let cnv = createCanvas(800, 420);
+ // const bounds = canv.elt.getBoundingClientRect()
+  cnv.position(0, 0, 'fixed'); 
+  // rosenorth added to align canvas with data value imput elements. 
+  //Would have prefered to find a way to relocate imput elements instead, but was unable to do so within available time. 
+
+// The actual coordinates will appear within a 720 by 360 pixel range. 
+//The extra pixels are there to create space for the interactivity and provide a sense of a border.
+// textAlign(CENTER, CENTER) //rosenorth removed as part of problem solving alignment issues
   
   dataValueInput = createInput("100", "number").size(60, 20);
   dataValueInput.position(100,380);
@@ -60,6 +66,8 @@ function draw() {
 // smallCircle =   circle(long + 360, 180 - lat, 5);
 // mediumCircle =  circle(long + 360, 180 - lat, 10);
 // largeCircle =   circle(long + 360, 180 - lat, 15);
+// idea during group work to make each circle a variable but were unable to make it display successfully
+// as they all appeared on top of one another isntead of depending on the imputs. 
 
   if ((lat < -90) || (lat > 90)) {
     return;
