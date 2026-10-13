@@ -5,7 +5,7 @@ var dataValueInput;
 function setup() {
   createCanvas(800, 420);
 // The actual coordinates will appear within a 720 by 360 pixel range. The extra pixels are there to create space for the interactivity and provide a sense of a border.
-  textAlign(CENTER, CENTER)
+// textAlign(CENTER, CENTER)
   
   dataValueInput = createInput("100", "number").size(60, 20);
   dataValueInput.position(100,380);
