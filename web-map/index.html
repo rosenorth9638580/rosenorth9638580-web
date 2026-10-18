@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Using data, step 3: change the initial view (UBC, North America)</title>
+  <link href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.13/lib/p5.min.js"></script>
+  <style>
+    body { margin: 0; }
+    #map { position: absolute; inset: 0; }
+    #map canvas.p5Canvas { position: absolute; top: 0; left: 0; pointer-events: none; z-index: 1; }
+  </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+// imagined user: geocache enthusist
+// purpose: place new caches at meteor locations, prioritizing
+// locations that were seen falling and may have lore associated
+// design choices: liberty basemap chosen to balance urban 
+// navigation and environmental features for more rural locations; 
+// purple for contrast against green, blue, and yellow of urban  
+// spaces; transparency for found meteors as they are less important 
+// for the imagined user
+
+const myMap = new maplibregl.Map({
+  container: 'map',
+  center: [-123.25, 49.26],   // [longitude, latitude]: focused on UBC ...
+  zoom: 2.5,                  // ... at a zoom where most of North America is in view
+  style: 'https://tiles.openfreemap.org/styles/liberty'
+});
+myMap.addControl(new maplibregl.NavigationControl());
+
+function latLngToPixel(lat, lng) { return myMap.project([lng, lat]); }
+function pixelToLatLng(x, y)     { const ll = myMap.unproject([x, y]); return { lat: ll.lat, lng: ll.lng }; }
+
+let meteorites;
+
+function preload() {
+  meteorites = loadTable('Meteorite_Landings.csv', 'csv', 'header');
+}
+
+function setup() {
+  const canvas = createCanvas(windowWidth, windowHeight);
+  canvas.parent('map');
+  myMap.on('move', () => redraw());
+  noLoop();
+  fill(70, 203, 31);
+  stroke(100);
+}
+
+function draw() {
+  clear();
+  const bounds = myMap.getBounds();
+  for (let i = 0; i < meteorites.getRowCount(); i++) {
+    const lat = meteorites.getNum(i, 'reclat');
+    const lng = meteorites.getNum(i, 'reclong');
+    if (bounds.contains([lng, lat])) {
+      const pos = latLngToPixel(lat, lng);
+      let size = meteorites.getNum(i, 'mass (g)');
+      size = map(size, 558, 60000000, 1, 25) + myMap.getZoom();
+	  if (meteorites.getString(i, 'fall') === 'Fell') {
+		fill(255, 27, 213);      // seen falling: opaque purple with stroke
+		stroke(173, 19, 145);
+    } else {
+		fill(255, 157, 237, 120); // found later: semi-transparent, no stroke
+		noStroke();
+	}
+      ellipse(pos.x, pos.y, size, size);
+	  
+    }
+  }
+  drawLegend()
+}
+// ledgend located top right with transparent white background 
+// to match basemap colour scheme/contrast levels
+function drawLegend() {
+  const x = width - 250, y = height*0.05;
+  noStroke();
+  fill(255, 255, 255, 150);
+  rect(x - 10, y - 30, 200, 90, 6);
+  fill(50);
+  textSize(13);
+  text("Meteorites in NASA's catalogue", x, y - 10);
+  fill(255, 27, 213); stroke(173, 19, 145);
+  ellipse(x + 8, y + 12, 12, 12);
+  noStroke(); fill(50);
+  text('descent observed', x + 24, y + 16);
+  fill(255, 157, 237, 120);
+  ellipse(x + 8, y + 36, 12, 12);
+  fill(50);
+  text('located post-descent', x + 24, y + 40);
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  redraw();
+}
+</script>
+</body>
+</html>
