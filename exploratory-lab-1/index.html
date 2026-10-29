@@ -7,31 +7,35 @@
   <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
   <style> body { margin: 0; } #map { position: absolute; inset: 0; } 
     #map-legend {
-      positon: absolute;
-      left: 0px;
-      margin-top: 10px;
-      margin-left: 0px;
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 25%;
       background-color: rgba(163, 157, 157, 0.85);
       padding: 5px;
       border-radius: 5px;
       z-index: 1000
+      font-family: system-ui;
+      font-size: small;
     }
   </style>
 </head>
 <body>
   <div id="map-legend">
       <h4>Supplemental Food Sources in Vancouver for Low-Income Measure Population by Census Dissemination Area</h4>
-      <div><span style="width: 20px; height: 15px; background-color: rgb(38, 174, 202); display: inline-block"></span> text here 1</div>
-      <div><span style="width: 20px; height: 15px; background-color: rgb(96, 20, 118); display: inline-block"></span> text here 2</div>
-      <div><span style="width: 20px; height: 15px; background-color: #fff5f0; display: inline-block"></span> text here ??</div>
-      <div><span style="width: 20px; height: 15px; background-color: #fee0d2; display: inline-block"></span> text here 20</div>
-      <div><span style="width: 20px; height: 15px; background-color: #fcbba1; display: inline-block"></span> text here 60</div>
-      <div><span style="width: 20px; height: 15px; background-color: #fc9272; display: inline-block"></span> text here 100</div>
-      <div><span style="width: 20px; height: 15px; background-color: #fb6a4a; display: inline-block"></span> text here 150</div>
-      <div><span style="width: 20px; height: 15px; background-color: #ef3b2c; display: inline-block"></span> text here 200</div>
-      <div><span style="width: 20px; height: 15px; background-color: #cb181d; display: inline-block"></span> text here 400</div>
-      <div><span style="width: 20px; height: 15px; background-color: #a50f15; display: inline-block"></span> text here 600</div>
-      <div><span style="width: 20px; height: 15px; background-color: #67000d; display: inline-block"></span> text here 800</div>
+      <div><span style="width: 15px; height: 15px; border-radius: 50%; background-color: rgb(38, 174, 202); display: inline-block"></span> Community Garden or Food Tree</div>
+      <div><span style="width: 15px; height: 15px; border-radius: 50%; background-color: rgb(96, 20, 118); display: inline-block"></span> Free or Low-Cost Food Program</div>
+      <div><span style="width: 20px; height: 15px; background-color: #fff5f0; display: inline-block"></span><20 In low income based on the Low-income measure</div>
+      <div><span style="width: 20px; height: 15px; background-color: #fee0d2; display: inline-block"></span>20-59 In low income based on the Low-income measure</div>
+      <div><span style="width: 20px; height: 15px; background-color: #fcbba1; display: inline-block"></span>60-99 In low income based on the Low-income measure</div>
+      <div><span style="width: 20px; height: 15px; background-color: #fc9272; display: inline-block"></span>100-149 In low income based on the Low-income measure</div>
+      <div><span style="width: 20px; height: 15px; background-color: #fb6a4a; display: inline-block"></span>150-199 In low income based on the Low-income measure</div>
+      <div><span style="width: 20px; height: 15px; background-color: #ef3b2c; display: inline-block"></span>200-399 In low income based on the Low-income measure</div>
+      <div><span style="width: 20px; height: 15px; background-color: #cb181d; display: inline-block"></span>400-599 In low income based on the Low-income measure</div>
+      <div><span style="width: 20px; height: 15px; background-color: #a50f15; display: inline-block"></span>600-799 In low income based on the Low-income measure</div>
+      <div><span style="width: 20px; height: 15px; background-color: #67000d; display: inline-block"></span>>800 In low income based on the Low-income measure</div>
+      <div>LIM-AT is a relative income measure that captures how many people live below 50% of the adjusted median after-tax household income.</div>
+      <div>LIM-AT data from Statistics Canada via CensusMapper; Supplemental Food Data from Vancouver Open Data Portal.</div>
     </div>
   <div id="map"></div>
   <script>
