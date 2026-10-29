@@ -23,7 +23,9 @@ Link to map:
 https://rosenorth9638580.github.io/rosenorth9638580-web/exploratory-lab-1/index.html
 
 Image:
-![alt text](https://rosenorth9638580.github.io/rosenorth9638580-web/exploratory-lab-1/lab-1-screenshot.png"rosenorth9638580_screenshot")
+![alt text][screenshot]
+
+[screenshot]: https://rosenorth9638580.github.io/rosenorth9638580-web/exploratory-lab-1/lab-1-screenshot.png "rosenorth9638580 screenshot"
 
 Collaboration:
 Professor Bergmann's assistance was crucial in helping me overcome the technical barriers during the data collection and 
