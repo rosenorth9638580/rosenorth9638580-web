@@ -2706,8 +2706,7 @@
       "source": "census-mapper",
       "layout": {"visibility": "visible"},
       "paint": {
-        "line-color": "rgba(195, 121, 121, 1)",
-        "line-layer-opacity": 0.3
+        "line-color": "rgba(195, 121, 121, 0.3)"
       }
     },
     {
