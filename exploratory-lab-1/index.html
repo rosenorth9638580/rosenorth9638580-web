@@ -2,13 +2,38 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>My map</title>
+  <title>Supplemental Food Sources by CDA for LIM-AT</title>
   <link href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
-  <style> body { margin: 0; } #map { position: absolute; inset: 0; } </style>
+  <style> body { margin: 0; } #map { position: absolute; inset: 0; } 
+    #map-legend {
+      positon: absolute;
+      left: 0px;
+      margin-top: 10px;
+      margin-left: 0px;
+      background-color: rgba(163, 157, 157, 0.85);
+      padding: 5px;
+      border-radius: 5px;
+      z-index: 1000
+    }
+  </style>
 </head>
 <body>
   <div id="map"></div>
+    <div id="map-legend">
+      <h4>Supplemental Food Sources in Vancouver for Low-Income Measure Population by Census Dissemination Area</h4>
+      <div><span style="width: 20px; height: 15px; background-color: rgb(38, 174, 202); display: inline-block"></span> text here 1</div>
+      <div><span style="width: 20px; height: 15px; background-color: rgb(96, 20, 118); display: inline-block"></span> text here 2</div>
+      <div><span style="width: 20px; height: 15px; background-color: #fff5f0; display: inline-block"></span> text here ??</div>
+      <div><span style="width: 20px; height: 15px; background-color: #fee0d2; display: inline-block"></span> text here 20</div>
+      <div><span style="width: 20px; height: 15px; background-color: #fcbba1; display: inline-block"></span> text here 60</div>
+      <div><span style="width: 20px; height: 15px; background-color: #fc9272; display: inline-block"></span> text here 100</div>
+      <div><span style="width: 20px; height: 15px; background-color: #fb6a4a; display: inline-block"></span> text here 150</div>
+      <div><span style="width: 20px; height: 15px; background-color: #ef3b2c; display: inline-block"></span> text here 200</div>
+      <div><span style="width: 20px; height: 15px; background-color: #cb181d; display: inline-block"></span> text here 400</div>
+      <div><span style="width: 20px; height: 15px; background-color: #a50f15; display: inline-block"></span> text here 600</div>
+      <div><span style="width: 20px; height: 15px; background-color: #67000d; display: inline-block"></span> text here 800</div>
+    </div>
   <script>
     const map = new maplibregl.Map({
       container: 'map',
@@ -17,6 +42,8 @@
       zoom: 11
     });
     map.addControl(new maplibregl.NavigationControl());
+    
+    
   </script>
 </body>
 </html>
