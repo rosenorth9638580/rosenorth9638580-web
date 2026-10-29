@@ -19,8 +19,7 @@
   </style>
 </head>
 <body>
-  <div id="map"></div>
-    <div id="map-legend">
+  <div id="map-legend">
       <h4>Supplemental Food Sources in Vancouver for Low-Income Measure Population by Census Dissemination Area</h4>
       <div><span style="width: 20px; height: 15px; background-color: rgb(38, 174, 202); display: inline-block"></span> text here 1</div>
       <div><span style="width: 20px; height: 15px; background-color: rgb(96, 20, 118); display: inline-block"></span> text here 2</div>
@@ -34,6 +33,7 @@
       <div><span style="width: 20px; height: 15px; background-color: #a50f15; display: inline-block"></span> text here 600</div>
       <div><span style="width: 20px; height: 15px; background-color: #67000d; display: inline-block"></span> text here 800</div>
     </div>
+  <div id="map"></div>
   <script>
     const map = new maplibregl.Map({
       container: 'map',
@@ -42,8 +42,6 @@
       zoom: 11
     });
     map.addControl(new maplibregl.NavigationControl());
-    
-    
   </script>
 </body>
 </html>
