@@ -1,0 +1,37 @@
+{
+  "version": 8,
+  "name": "Empty Style",
+  "metadata": {"maputnik:renderer": "mlgljs"},
+  "sources": {
+    "bc-land-cover": {
+      "type": "vector",
+      "url": "pmtiles://https://rosenorth9638580.github.io/rosenorth9638580/rosenorth9638580-web/exploratory-lab-2/landcover-2020-reprojected-bc-tiles-v5.pmtiles"
+    },
+    "bc-bee-occurances": {
+      "type": "geojson",
+      "data": "https://rosenorth9638580.github.io/rosenorth9638580/rosenorth9638580-web/exploratory-lab-2/bee-occurances-projected-bc.geojson"
+    },
+    "bc-hillshade": {
+      "type": "vector",
+      "url": "pmtiles://https://rosenorth9638580.github.io/rosenorth9638580/rosenorth9638580-web/exploratory-lab-2/hillshade-projected-v2-clip-mask-tiles-v3.pmtiles"
+    }
+  },
+  "sprite": "",
+  "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "bc-land-cover",
+      "type": "fill",
+      "source": "bc-land-cover",
+      "source-layer": "bc-land-cover"
+    },
+    {
+      "id": "bc-hillshade",
+      "type": "fill",
+      "source": "bc-hillshade",
+      "source-layer": "bc-hillshade"
+    },
+    {"id": "bc-bee-occurances", "type": "circle", "source": "bc-bee-occurances"}
+  ],
+  "id": "79f2hnr"
+}
