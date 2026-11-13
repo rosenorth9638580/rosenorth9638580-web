@@ -3,35 +3,47 @@
   "name": "Empty Style",
   "metadata": {"maputnik:renderer": "mlgljs"},
   "sources": {
-    "bc-land-cover": {
-      "type": "vector",
-      "url": "pmtiles://https://rosenorth9638580.github.io/rosenorth9638580/rosenorth9638580-web/exploratory-lab-2/landcover-2020-reprojected-bc-tiles-v5.pmtiles"
-    },
     "bc-bee-occurances": {
       "type": "geojson",
-      "data": "https://rosenorth9638580.github.io/rosenorth9638580/rosenorth9638580-web/exploratory-lab-2/bee-occurances-projected-bc.geojson"
+      "data": "https://rosenorth9638580.github.io/rosenorth9638580-web/exploratory-lab-2/bee-occurances-projected-bc.geojson"
     },
-    "bc-hillshade": {
-      "type": "vector",
-      "url": "pmtiles://https://rosenorth9638580.github.io/rosenorth9638580/rosenorth9638580-web/exploratory-lab-2/hillshade-projected-v2-clip-mask-tiles-v3.pmtiles"
+    "BC-Landcover": {
+      "type": "raster-dem",
+      "url": "pmtiles://https://rosenorth9638580.github.io/rosenorth9638580-web/exploratory-lab-2/landcover-2020-reprojected-bc-tiles-v5.pmtiles"
+    },
+    "BC-Hillshade": {
+      "type": "raster",
+      "url": "pmtiles://https://rosenorth9638580.github.io/rosenorth9638580-web/exploratory-lab-2/hillshade-projected-v2-clip-mask-tiles-v3.pmtiles"
     }
   },
   "sprite": "",
   "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
   "layers": [
     {
-      "id": "bc-land-cover",
-      "type": "fill",
-      "source": "bc-land-cover",
-      "source-layer": "bc-land-cover"
+      "id": "BC Hillshade",
+      "type": "hillshade",
+      "source": "BC-Landcover",
+      "layout": {"visibility": "visible"}
     },
     {
-      "id": "bc-hillshade",
-      "type": "fill",
-      "source": "bc-hillshade",
-      "source-layer": "bc-hillshade"
+      "id": "BC LandCover",
+      "type": "raster",
+      "source": "BC-Hillshade",
+      "layout": {"visibility": "visible"},
+      "paint": {"raster-opacity": 0.7}
     },
-    {"id": "bc-bee-occurances", "type": "circle", "source": "bc-bee-occurances"}
+    {
+      "id": "Bee Occurances",
+      "type": "circle",
+      "source": "bc-bee-occurances",
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "circle-color": "rgba(235, 195, 16, 1)",
+        "circle-opacity": 0.7,
+        "circle-stroke-color": "rgba(255, 225, 94, 1)",
+        "circle-stroke-width": 0.5
+      }
+    }
   ],
   "id": "79f2hnr"
 }
