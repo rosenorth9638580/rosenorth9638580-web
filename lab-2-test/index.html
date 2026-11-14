@@ -2,16 +2,74 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>My map</title>
+  <title>Bees of British Columbia</title>
   <link href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
   <script src="https://unpkg.com/pmtiles@4.5.0/dist/pmtiles.js"></script>
-  <style> body { margin: 0; } #map { position: absolute; inset: 0; } </style>
+  <style> body { margin: 0; } #map { position: absolute; inset: 0; }
+    #map-data {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        background-color: rgba(240, 248, 243, 0.75);
+        padding: 8px;
+        border-radius: 5px;
+        z-index: 1001;
+        font-family: system-ui;
+        font-size: x-small;
+      }
+      #map-legend {
+        position: fixed;
+        bottom: 90px;
+        left: 10px;
+        background-color: rgba(248, 244, 240, 0.75);
+        padding: 15px;
+        border-radius: 5px;
+        z-index: 1000;
+        font-family: system-ui;
+        font-size: small;
+      }
+      #legend-title {
+        margin-top: 0px;
+        margin-bottom: 8px;
+      }
+      
+   </style>
 </head>
 <body>
+  <div id="map-legend">
+      <h4 id="legend-title">Bee Species of Brish Columbia</h4>
+      <div><span style="width: 20px; height: 20px; margin-right: 8px; background-color: rgba(235, 16, 198, 0.9); border: 0.8px solid #ebdcb5; border-radius: 50%; border-color: rgba(0, 0, 0, 1); display: inline-block"></span>Bee Occurance</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #1c3d1c; display: inline-block"></span>Temperate or sub-polar needleleaf forest</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #949c6f; display: inline-block"></span>Sub-polar taiga needleleaf forest</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #176333; display: inline-block"></span>Tropical or sub-tropical broadleaf evergreen forest</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #22ab4a; display: inline-block"></span>Tropical or sub-tropical broadleaf decidous forest</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #188c45; display: inline-block"></span>Temperate or sub-polar broadleaf decidous forest</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #5c7634; display: inline-block"></span>Mixed forest</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #b29e32; display: inline-block"></span>Tropical or sub-tropical shrubland</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #b38a31; display: inline-block"></span>Temperate or sub-polar shrubland</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #e8dc5d; display: inline-block"></span>Tropical or sub-tropical grassland</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #e2d08a; display: inline-block"></span>Temperate or sub-polar grassland</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #9c7654; display: inline-block"></span>Sub-polar or polar shrubland-lichen-moss</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #bad38d; display: inline-block"></span>Sub-polar or polar grassland-lichen-moss</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #408b71; display: inline-block"></span>Sub-polar or polar barren-lichen-moss</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #6aa38a; display: inline-block"></span>Wetland</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #e5af66; display: inline-block"></span>Cropland</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #a8acaf; display: inline-block"></span>Barren land</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #dc2327; display: inline-block"></span>Urban and built-up</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #4c70a4; display: inline-block"></span>Water</div>
+      <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #fffafc; display: inline-block"></span>Snow and ice</div>
+    </div>
+    <div id="map-data">
+      <div>Bee occurance data from GBIF.org (6 November 2026) GBIF Occurrence Download https://doi.org/10.15468/dl.yz5umu</div>
+      <div>Bee species selected from https://www.beesofcanada.com/species</div>
+      <div>2020 Land Cover of Canada from Natural Resources Canada, via Open Government Portal</div>
+      <div>Canada terrain data contains information licensed under the Open Government Licence - Canada</div>
+    </div>
+
   <div id="map"></div>
   <script>
-    /*import * as maplibregl from 'https://unpkg.com/pmtiles@4.5.0/dist/pmtiles.js';*/
+    
     const protocol = new pmtiles.Protocol();
       maplibregl.addProtocol('pmtiles', protocol.tile);
       
