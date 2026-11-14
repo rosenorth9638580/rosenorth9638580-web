@@ -6,6 +6,7 @@
   <link href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
   <script src="https://unpkg.com/pmtiles@4.5.0/dist/pmtiles.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7.4.0/turf.min.js"></script>
   <style> body { margin: 0; } #map { position: absolute; inset: 0; }
     #map-data {
         position: fixed;
@@ -117,6 +118,7 @@
       hoverPopup.remove();
     }
     // Add turf.js to create a buffer on mouse click here
+    // the buffer should only appear if a data point is clicked, not just anywhere on the map
   </script>
 </body>
 </html>
