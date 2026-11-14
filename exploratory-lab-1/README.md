@@ -29,7 +29,7 @@ Image:
 
 Collaboration:
 Professor Bergmann's assistance was crucial in helping me overcome the technical barriers during the data collection and 
-web hosting portions of this lab, and I would not have been able to reach the styling portion without it. Lila Jones was of 
+web hosting portions of this lab, and I would not have been able to reach the styling portion without it. @ljones47 was of 
 great assistance as well. We shared frustrations, and they helped me problem solve by reminding me to use the console to check 
 for errors and suggesting what they had done to overcome their issues. They did ask me about some of their challenges but 
 unfortunately, I was not able to provide much technical assistance. Two key areas they helped with were in reminding me how 
