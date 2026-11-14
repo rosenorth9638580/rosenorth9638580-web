@@ -81,6 +81,8 @@
     });
     map.addControl(new maplibregl.NavigationControl());
 
+    // Attempting to add a mouseover event, with a popup that displays 
+    // bee species and event date information on hover
     import * as maplibregl from 'https://cdn.jsdelivr.net/npm/maplibre-gl@6.15.0/dist/maplibre-gl.mjs';
 
     const bee = 'https://rosenorth9638580.github.io/rosenorth9638580-web/lab-2-test/bee-occurances-projected-bc.geojson';
@@ -89,9 +91,9 @@
         const bee = e.features[0].properties;
         if (bee.SPECIES) {
           const popup = new maplibregl.Popup();
-          popup.setLng(e.decimalLongitude);
+          popup.setLngLat(e.coordinates);
           popup.setLat(e.decimalLatitude);
-          popup.setText(bee.SPECIES);
+          popup.setText(bee.SPECIES); // I also wanted to include .eventDate but was unsure how to include multiple pop.setText in a single popup
           popup.addTo(map);
         }
       };
@@ -103,8 +105,7 @@
     function hoverBee(e) {
       const bee = e.features[0].properties;
       if (bee.SPECIES) {
-        hoverPopup.setLng(e.features[0].properties.decimalLongitude);
-        hoverPopup.setLat(e.features[0].properties.decimalLatitude);
+        hoverPopup.setLngLat(e.features[0].geometry.coordinates);
         hoverPopup.setText(bee.SPECIES);
         hoverPopup.addTo(map);
       } else {
@@ -115,6 +116,7 @@
     function leaveBee() {
       hoverPopup.remove();
     }
+    // Add turf.js to create a buffer on mouse click here
   </script>
 </body>
 </html>
