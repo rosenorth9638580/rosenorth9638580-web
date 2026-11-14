@@ -1,3 +1,5 @@
+Bee Species of British Columbia
+
 This map was designed for a member of the general public who might have an interest in bees in British Columbia. 
 It is not designed to make a particular argument, but rather for the user to explore the bee occurrence data and 
 make their own inferences about their location, habitat, and other factors present on the map. To improve the map, 
