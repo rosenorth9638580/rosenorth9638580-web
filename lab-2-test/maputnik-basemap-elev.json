@@ -16,11 +16,11 @@
     },
     "Land Cover": {
       "type": "raster",
-      "url": "pmtiles://https://rosenorth9638580.github.io/rosenorth9638580-web/exploratory-lab-2/landcover-2020-reprojected-bc-tiles-v5.pmtiles"
+      "url": "pmtiles://https://rosenorth9638580.github.io/rosenorth9638580-web/lab-2-test/landcover-2020-reprojected-bc-tiles-v5.pmtiles"
     },
     "Bee Occurances": {
       "type": "geojson",
-      "data": "https://rosenorth9638580.github.io/rosenorth9638580-web/exploratory-lab-2/bee-occurances-projected-bc.geojson"
+      "data": "https://rosenorth9638580.github.io/rosenorth9638580-web/lab-2-test/bee-occurances-projected-bc.geojson"
     },
     "hillshade-v2": {
       "type": "raster-dem",
