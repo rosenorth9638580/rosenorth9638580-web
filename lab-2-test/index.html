@@ -38,7 +38,7 @@
 </head>
 <body>
   <div id="map-legend">
-      <h4 id="legend-title">Bee Species of Brish Columbia</h4>
+      <h4 id="legend-title">Bee Species of British Columbia</h4>
       <div><span style="width: 20px; height: 20px; margin-right: 8px; background-color: rgba(235, 16, 198, 0.9); border: 0.8px solid #ebdcb5; border-radius: 50%; border-color: rgba(0, 0, 0, 1); display: inline-block"></span>Bee Occurance</div>
       <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #1c3d1c; display: inline-block"></span>Temperate or sub-polar needleleaf forest</div>
       <div><span style="width: 20px; height: 15px; margin-right: 8px; background-color: #949c6f; display: inline-block"></span>Sub-polar taiga needleleaf forest</div>
@@ -68,7 +68,7 @@
     </div>
 
   <div id="map"></div>
-  <script>
+  <script type="module">
     
     const protocol = new pmtiles.Protocol();
       maplibregl.addProtocol('pmtiles', protocol.tile);
@@ -80,6 +80,41 @@
       zoom: 4.6
     });
     map.addControl(new maplibregl.NavigationControl());
+
+    import * as maplibregl from 'https://cdn.jsdelivr.net/npm/maplibre-gl@6.15.0/dist/maplibre-gl.mjs';
+
+    const bee = 'https://rosenorth9638580.github.io/rosenorth9638580-web/lab-2-test/bee-occurances-projected-bc.geojson';
+
+    function onEachBee(e) {
+        const bee = e.features[0].properties;
+        if (bee.SPECIES) {
+          const popup = new maplibregl.Popup();
+          popup.setLng(e.decimalLongitude);
+          popup.setLat(e.decimalLatitude);
+          popup.setText(bee.SPECIES);
+          popup.addTo(map);
+        }
+      };
+      map.on('mousemove', hoverBee);
+      map.on('mouseleave', leaveBee);
+
+    const hoverPopup = new maplibregl.Popup({ closeButton: false });
+
+    function hoverBee(e) {
+      const bee = e.features[0].properties;
+      if (bee.SPECIES) {
+        hoverPopup.setLng(e.features[0].properties.decimalLongitude);
+        hoverPopup.setLat(e.features[0].properties.decimalLatitude);
+        hoverPopup.setText(bee.SPECIES);
+        hoverPopup.addTo(map);
+      } else {
+        hoverPopup.remove();
+      }
+    }
+
+    function leaveBee() {
+      hoverPopup.remove();
+    }
   </script>
 </body>
 </html>
